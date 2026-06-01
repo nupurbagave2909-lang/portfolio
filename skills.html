@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Skills | Nupur Bagave</title>
+  <meta name="description" content="Overview of programming languages, databases, web technologies, and developer tools used by Nupur Bagave.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+  <!-- Custom Cursor Elements -->
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-inner"></div>
+
+  <!-- Background Decorative Glowing Blobs -->
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        Nupur Bagave<span class="logo-dot"></span>
+      </a>
+      
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="about.html">About Me</a></li>
+        <li class="nav-item"><a href="skills.html">Skills</a></li>
+        <li class="nav-item"><a href="learnings.html">Learnings</a></li>
+        <li class="nav-item"><a href="projects.html">Projects</a></li>
+        <li class="nav-item"><a href="certificates.html">Certificates</a></li>
+        <li class="nav-item"><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Skills Content -->
+  <main class="main-content container">
+    <section style="padding: 2rem 0;">
+      <h1 class="section-title reveal">Technical Skills</h1>
+      <p class="section-desc reveal">A breakdown of my software engineering capabilities and technical stack.</p>
+
+      <div class="skills-container">
+        
+        <!-- Category 1: Languages (Progress Bar presentation) -->
+        <div class="glass-card reveal">
+          <h2 class="skills-category-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            Programming Languages
+          </h2>
+          
+          <div class="skill-list-vertical">
+            <div class="skill-item-progress">
+              <div class="skill-header">
+                <span>Python (AI &amp; Algorithms)</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-progress="85"></div>
+              </div>
+            </div>
+            
+            <div class="skill-item-progress">
+              <div class="skill-header">
+                <span>C / C++ (Data Structures)</span>
+                <span>80%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-progress="80"></div>
+              </div>
+            </div>
+
+            <div class="skill-item-progress">
+              <div class="skill-header">
+                <span>Java (OOP &amp; Systems)</span>
+                <span>75%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-progress="75"></div>
+              </div>
+            </div>
+
+            <div class="skill-item-progress">
+              <div class="skill-header">
+                <span>JavaScript (ES6+)</span>
+                <span>82%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-progress="82"></div>
+              </div>
+            </div>
+
+            <div class="skill-item-progress">
+              <div class="skill-header">
+                <span>SQL (Query Optimization)</span>
+                <span>78%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-progress="78"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 2: Web & Mobile (Progress Bars & Badges) -->
+        <div class="glass-card reveal">
+          <h2 class="skills-category-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-secondary);"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            Web &amp; Mobile Stack
+          </h2>
+          
+          <div class="skill-list-vertical" style="margin-bottom: 1.5rem;">
+            <div class="skill-item-progress">
+              <div class="skill-header">
+                <span>HTML5 / CSS3 Layouts</span>
+                <span>90%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-progress="90"></div>
+              </div>
+            </div>
+
+            <div class="skill-item-progress">
+              <div class="skill-header">
+                <span>Vanilla JS DOM Manipulation</span>
+                <span>85%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" data-progress="85"></div>
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">Frameworks &amp; APIs:</p>
+          <div class="skill-grid-badges">
+            <span class="skill-badge">Next.js</span>
+            <span class="skill-badge">Node.js</span>
+            <span class="skill-badge">Flutter</span>
+            <span class="skill-badge">RESTful APIs</span>
+          </div>
+        </div>
+
+        <!-- Category 3: Databases & Tools (Badge presentation) -->
+        <div class="glass-card reveal-right">
+          <h2 class="skills-category-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent);"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path></svg>
+            Databases &amp; Systems
+          </h2>
+          <div class="skill-grid-badges" style="margin-bottom: 2rem;">
+            <span class="skill-badge">Supabase</span>
+            <span class="skill-badge">PostgreSQL</span>
+            <span class="skill-badge">MongoDB</span>
+            <span class="skill-badge">SQLite</span>
+          </div>
+
+          <h2 class="skills-category-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            Developer Tools
+          </h2>
+          <div class="skill-grid-badges">
+            <span class="skill-badge">Git</span>
+            <span class="skill-badge">GitHub</span>
+            <span class="skill-badge">VS Code</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-logo">NB.</div>
+      <div class="footer-text">&copy; 2026 Nupur Sachin Bagave. All rights reserved.</div>
+      <div class="footer-socials">
+        <a href="https://github.com/nupurbagave2909-lang" target="_blank" class="social-icon-btn" aria-label="GitHub Profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="social-icon-btn" aria-label="LinkedIn Profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript scripts -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

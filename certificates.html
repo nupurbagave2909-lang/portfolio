@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificates | Nupur Bagave</title>
+  <meta name="description" content="View certifications and technical training achievements of Nupur Bagave.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+  <!-- Custom Cursor Elements -->
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-inner"></div>
+
+  <!-- Background Decorative Glowing Blobs -->
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        Nupur Bagave<span class="logo-dot"></span>
+      </a>
+      
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="about.html">About Me</a></li>
+        <li class="nav-item"><a href="skills.html">Skills</a></li>
+        <li class="nav-item"><a href="learnings.html">Learnings</a></li>
+        <li class="nav-item"><a href="projects.html">Projects</a></li>
+        <li class="nav-item"><a href="certificates.html">Certificates</a></li>
+        <li class="nav-item"><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Certificates Content -->
+  <main class="main-content container">
+    <section style="padding: 2rem 0;">
+      <h1 class="section-title reveal">Certificates &amp; Achievements</h1>
+      <p class="section-desc reveal">Verifications of completed software engineering programs and artificial intelligence training.</p>
+
+      <!-- Category Filter Tags -->
+      <div class="filter-tags reveal">
+        <button class="filter-btn active" onclick="filterCategory('all', this)">All Categories</button>
+        <button class="filter-btn" onclick="filterCategory('dev', this)">Agile &amp; Development</button>
+        <button class="filter-btn" onclick="filterCategory('devops', this)">DevOps &amp; CI/CD</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="certificates-grid">
+        
+        <!-- Certificate Card 1: IBM DevOps Basics -->
+        <div class="glass-card certificate-card reveal" data-category="devops" id="cert-ibm-devops">
+          <div class="certificate-image-wrapper">
+            <img src="assets/images/cert-devops-ibm.jpg" alt="DevOps Basics for Everyone Certificate by IBM">
+            <div class="cert-overlay">
+              <span>Quick Preview</span>
+            </div>
+          </div>
+          <h2 class="certificate-card-title">DevOps Basics for Everyone</h2>
+          <p class="certificate-card-org">IBM (edX)</p>
+          <span class="certificate-card-year">2026</span>
+        </div>
+
+        <!-- Certificate Card 2: Infosys Agile -->
+        <div class="glass-card certificate-card reveal" data-category="dev" id="cert-infosys-agile">
+          <div class="certificate-image-wrapper">
+            <img src="assets/images/cert-agile-infosys.png" alt="Introduction to Agile Methodology Certificate by Infosys Springboard">
+            <div class="cert-overlay">
+              <span>Quick Preview</span>
+            </div>
+          </div>
+          <h2 class="certificate-card-title">Introduction to Agile Methodology</h2>
+          <p class="certificate-card-org">Infosys Springboard</p>
+          <span class="certificate-card-year">2026</span>
+        </div>
+
+        <!-- Certificate Card 3: Infosys CI/CD -->
+        <div class="glass-card certificate-card reveal" data-category="devops" id="cert-infosys-cicd">
+          <div class="certificate-image-wrapper">
+            <img src="assets/images/cert-cicd-infosys.png" alt="Continuous Integration and Delivery - DevOps Certificate by Infosys Springboard">
+            <div class="cert-overlay">
+              <span>Quick Preview</span>
+            </div>
+          </div>
+          <h2 class="certificate-card-title">Continuous Integration and Delivery - DevOps</h2>
+          <p class="certificate-card-org">Infosys Springboard</p>
+          <span class="certificate-card-year">2026</span>
+        </div>
+
+        <!-- Certificate Card 4: Infosys DevOps Foundation -->
+        <div class="glass-card certificate-card reveal" data-category="devops" id="cert-infosys-devops">
+          <div class="certificate-image-wrapper">
+            <img src="assets/images/cert-devops-infosys.png" alt="DevOps Foundation Certification by Infosys Springboard">
+            <div class="cert-overlay">
+              <span>Quick Preview</span>
+            </div>
+          </div>
+          <h2 class="certificate-card-title">DevOps Foundation Certification</h2>
+          <p class="certificate-card-org">Infosys Springboard</p>
+          <span class="certificate-card-year">2026</span>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Lightbox Modal (For previews) -->
+  <div class="modal-overlay" id="cert-modal">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="modal-close" aria-label="Close Preview Modal">&times;</button>
+      <div class="modal-body">
+        <div class="modal-image-wrapper">
+          <!-- Populated dynamically via javascript clone -->
+        </div>
+        <div class="modal-details">
+          <h3 class="modal-title">Certificate Name</h3>
+          <p class="modal-org">Organization Name</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-logo">NB.</div>
+      <div class="footer-text">&copy; 2026 Nupur Sachin Bagave. All rights reserved.</div>
+      <div class="footer-socials">
+        <a href="https://github.com/nupurbagave2909-lang" target="_blank" class="social-icon-btn" aria-label="GitHub Profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/nupur-bagave-48762b329/" target="_blank" class="social-icon-btn" aria-label="LinkedIn Profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript scripts -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    function filterCategory(cat, btn) {
+      // Deactivate all filter buttons
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active');
+      });
+      // Activate selected button
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.certificate-card');
+      
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (cat === 'all' || cardCat === cat) {
+          card.style.display = 'flex';
+          // Fade-in animation
+          card.style.opacity = '0';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 50);
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

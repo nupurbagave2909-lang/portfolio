@@ -1,0 +1,76 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" rx="16" fill="#f8fafc"/>
+  <rect width="600" height="400" rx="16" fill="url(#bg-gradient)" opacity="0.3"/>
+  
+  <!-- Grid Lines -->
+  <path d="M 0 50 L 600 50 M 0 100 L 600 100 M 0 150 L 600 150 M 0 200 L 600 200 M 0 250 L 600 250 M 0 300 L 600 300 M 0 350 L 600 350" stroke="#f1f5f9" stroke-width="1"/>
+  <path d="M 100 0 L 100 400 M 200 0 L 200 400 M 300 0 L 300 400 M 400 0 L 400 400 M 500 0 L 500 400" stroke="#f1f5f9" stroke-width="1"/>
+
+  <!-- Title Card (Glassmorphic look) -->
+  <rect x="25" y="25" width="220" height="60" rx="10" fill="white" fill-opacity="0.8" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+  <text x="40" y="48" font-family="'Outfit', sans-serif" font-size="14" font-weight="700" fill="#1e293b">AOPS Visualizer v2.0</text>
+  <text x="40" y="66" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#64748b">Dijkstra's Path Solver</text>
+  <circle cx="215" cy="55" r="5" fill="#10b981"/>
+
+  <!-- Flight Graph Connections (Edges) -->
+  <!-- Non-optimal edges -->
+  <path d="M 150 250 L 300 120" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="210" y="175" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#94a3b8">cost: 450</text>
+  
+  <path d="M 300 120 L 450 180" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="365" y="145" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#94a3b8">cost: 280</text>
+
+  <path d="M 150 250 L 320 310" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="220" y="295" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#94a3b8">cost: 320</text>
+  
+  <path d="M 320 310 L 480 270" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="390" y="305" font-family="'Outfit', sans-serif" font-size="11" font-weight="700" fill="#94a3b8">cost: 390</text>
+
+  <!-- Optimal edges (highlighted in Indigo gradient/glow) -->
+  <path d="M 150 250 L 280 220" stroke="#4f46e5" stroke-width="4" stroke-linecap="round"/>
+  <text x="195" y="225" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" fill="#4f46e5">cost: 150</text>
+
+  <path d="M 280 220 L 480 270" stroke="#4f46e5" stroke-width="4" stroke-linecap="round"/>
+  <text x="360" y="240" font-family="'Outfit', sans-serif" font-size="12" font-weight="700" fill="#4f46e5">cost: 180</text>
+
+  <!-- Airport Nodes -->
+  <!-- Node BOM (Mumbai) -->
+  <circle cx="150" cy="250" r="24" fill="white" stroke="#64748b" stroke-width="3"/>
+  <text x="137" y="254" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#1e293b">BOM</text>
+  <text x="120" y="287" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#64748b">Source</text>
+
+  <!-- Node DEL (Delhi) -->
+  <circle cx="300" cy="120" r="22" fill="white" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="288" y="124" font-family="'Outfit', sans-serif" font-size="10" font-weight="700" fill="#475569">DEL</text>
+
+  <!-- Node HYD (Hyderabad) -->
+  <circle cx="280" cy="220" r="24" fill="white" stroke="#4f46e5" stroke-width="3"/>
+  <text x="268" y="224" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#4f46e5">HYD</text>
+
+  <!-- Node CCU (Kolkata) -->
+  <circle cx="450" cy="180" r="22" fill="white" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="438" y="184" font-family="'Outfit', sans-serif" font-size="10" font-weight="700" fill="#475569">CCU</text>
+
+  <!-- Node GOI (Goa) -->
+  <circle cx="320" cy="310" r="22" fill="white" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="309" y="314" font-family="'Outfit', sans-serif" font-size="10" font-weight="700" fill="#475569">GOI</text>
+
+  <!-- Node BLR (Bangalore) -->
+  <circle cx="480" cy="270" r="24" fill="white" stroke="#f43f5e" stroke-width="3"/>
+  <text x="468" y="274" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#f43f5e">BLR</text>
+  <text x="460" y="307" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#f43f5e">Destination</text>
+
+  <!-- Metrics box -->
+  <rect x="415" y="25" width="160" height="75" rx="10" fill="white" fill-opacity="0.8" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+  <text x="430" y="45" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#64748b">OPTIMIZED METRICS:</text>
+  <text x="430" y="65" font-family="Inter, sans-serif" font-size="11" fill="#1e293b">Path: BOM → HYD → BLR</text>
+  <text x="430" y="82" font-family="Inter, sans-serif" font-size="11" fill="#1e293b">Total Cost: <tspan font-weight="700" fill="#10b981">330 units</tspan></text>
+
+  <defs>
+    <linearGradient id="bg-gradient" x1="0" y1="0" x2="600" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+  </defs>
+</svg>
