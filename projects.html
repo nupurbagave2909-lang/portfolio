@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/pages.css">
-  <style>
     /* Inline sub-tab navigation for primary project diagrams */
     .diagram-tabs {
       display: flex;
@@ -57,6 +56,66 @@
       width: 100%;
       height: 100%;
     }
+    /* AOTTS Image Gallery */
+    .aotts-gallery {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: inherit;
+    }
+    .aotts-gallery-track {
+      display: flex;
+      width: 200%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .aotts-gallery-track img {
+      width: 50%;
+      height: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .aotts-gallery-dots {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 2;
+    }
+    .aotts-gallery-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .aotts-gallery-dots span.active {
+      background: #fff;
+    }
+    .aotts-gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.7);
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: background 0.2s;
+    }
+    .aotts-gallery-arrow:hover { background: #fff; }
+    .aotts-gallery-arrow.prev { left: 8px; }
+    .aotts-gallery-arrow.next { right: 8px; }
   </style>
 </head>
 <body>
@@ -337,7 +396,18 @@
         <!-- Card Project 3: AOTTS -->
         <div class="glass-card project-card reveal-right">
           <div class="project-card-image">
-            <img src="assets/images/aotts-preview.svg" alt="AOTTS Viewfinder Camera Target Tracking">
+            <div class="aotts-gallery" id="aotts-gallery">
+              <div class="aotts-gallery-track" id="aotts-track">
+                <img src="assets/images/aotts-hardware.jpg" alt="AOTTS Hardware Build - Pan-Tilt servo mount on Raspberry Pi box">
+                <img src="assets/images/aotts-demo.jpg" alt="AOTTS Live Demo - Real-time tracking on laptop with hardware unit">
+              </div>
+              <button class="aotts-gallery-arrow prev" onclick="aottsSlide(-1)" aria-label="Previous">&#8249;</button>
+              <button class="aotts-gallery-arrow next" onclick="aottsSlide(1)" aria-label="Next">&#8250;</button>
+              <div class="aotts-gallery-dots">
+                <span class="active" onclick="aottsGoTo(0)"></span>
+                <span onclick="aottsGoTo(1)"></span>
+              </div>
+            </div>
           </div>
           <span class="project-badge-primary" style="background: rgba(6, 182, 212, 0.1); color: var(--color-accent); margin-bottom: 0.75rem;">Artificial Intelligence / ML</span>
           <h3 class="project-card-title">AOTTS - Always On Target Tracking</h3>
@@ -389,6 +459,23 @@
   <!-- JavaScript scripts -->
   <script src="assets/js/main.js"></script>
   <script>
+    /* ── AOTTS Image Gallery ── */
+    let aottsCurrent = 0;
+    const aottsDots = document.querySelectorAll('.aotts-gallery-dots span');
+
+    function aottsGoTo(index) {
+      aottsCurrent = index;
+      document.getElementById('aotts-track').style.transform = `translateX(-${index * 50}%)`;
+      aottsDots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+
+    function aottsSlide(dir) {
+      aottsGoTo((aottsCurrent + dir + 2) % 2);
+    }
+
+    // Auto-play every 3.5 seconds
+    setInterval(() => aottsSlide(1), 3500);
+
     function switchDiagram(diagramId, btn) {
       const container = btn.closest('.project-gallery-pane');
       // Hide all diagram contents
