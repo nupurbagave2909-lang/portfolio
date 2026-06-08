@@ -10,6 +10,12 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/animations.css">
   <link rel="stylesheet" href="assets/css/pages.css">
+  
+  <!-- Mermaid for rendering markdown diagrams -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'default' });
+  </script>
   <style>
     /* Inline sub-tab navigation for primary project diagrams */
     .diagram-tabs {
@@ -181,107 +187,105 @@
               <div class="diagram-tabs">
                 <button class="diagram-tab-btn active" onclick="switchDiagram('ppes-arch', this)">Architecture</button>
                 <button class="diagram-tab-btn" onclick="switchDiagram('ppes-flow', this)">Workflow</button>
-                <button class="diagram-tab-btn" onclick="switchDiagram('ppes-usecase', this)">UML Use Case</button>
+                <button class="diagram-tab-btn" onclick="switchDiagram('ppes-usecase', this)">UML Sequence</button>
               </div>
 
               <!-- Diagram Content 1: Architecture -->
               <div id="ppes-arch" class="diagram-content active">
-                <div class="diagram-svg-container">
-                  <!-- System Architecture SVG Diagram -->
-                  <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="10" y="40" width="100" height="120" rx="6" fill="#e0e7ff" stroke="#4f46e5" stroke-width="1.5"/>
-                    <text x="60" y="90" font-family="Inter, sans-serif" font-weight="700" font-size="12" fill="#4f46e5" text-anchor="middle">Client App</text>
-                    <text x="60" y="110" font-family="Inter, sans-serif" font-size="9" fill="#1e293b" text-anchor="middle">HTML5/CSS3/JS</text>
-                    <text x="60" y="125" font-family="Inter, sans-serif" font-size="9" fill="#1e293b" text-anchor="middle">Local Sessions</text>
-
-                    <path d="M 110 100 L 150 100" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
-
-                    <rect x="150" y="40" width="100" height="120" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-                    <text x="200" y="90" font-family="Inter, sans-serif" font-weight="700" font-size="12" fill="#10b981" text-anchor="middle">API Layer</text>
-                    <text x="200" y="110" font-family="Inter, sans-serif" font-size="9" fill="#1e293b" text-anchor="middle">REST Endpoint</text>
-                    <text x="200" y="125" font-family="Inter, sans-serif" font-size="9" fill="#1e293b" text-anchor="middle">Supabase RPC</text>
-
-                    <path d="M 250 100 L 290 100" stroke="#94a3b8" stroke-width="2"/>
-
-                    <rect x="290" y="40" width="100" height="120" rx="6" fill="#fff1f2" stroke="#f43f5e" stroke-width="1.5"/>
-                    <text x="340" y="90" font-family="Inter, sans-serif" font-weight="700" font-size="12" fill="#f43f5e" text-anchor="middle">Database</text>
-                    <text x="340" y="110" font-family="Inter, sans-serif" font-size="9" fill="#1e293b" text-anchor="middle">PostgreSQL</text>
-                    <text x="340" y="125" font-family="Inter, sans-serif" font-size="9" fill="#1e293b" text-anchor="middle">Student Tables</text>
-
-                    <defs>
-                      <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
-                      </marker>
-                    </defs>
-                  </svg>
+                <div class="diagram-svg-container" style="max-height: 400px; overflow-y: auto;">
+                  <pre style="font-family: monospace; font-size: 0.65rem; line-height: 1.2; padding: 1rem; color: #334155; text-align: left;">
+┌─────────────────────────────────────────────────────────────────┐
+│                        Client Browser                           │
+└───────────────┬──────────────────────────────┬─────────────────┘
+                │  HTTPS (SSR / CSR)            │  Razorpay SDK
+                ▼                              ▼
+┌──────────────────────────┐      ┌──────────────────────────────┐
+│   Next.js 14 Frontend    │      │     Razorpay Payment Gateway  │
+│   (App Router, Port 3000)│      └──────────────────────────────┘
+│                          │
+│  ┌────────────────────┐  │  Next.js Server Actions (direct DB)
+│  │  Middleware.ts     │  │◄──────────────────────────────────────┐
+│  │  (JWT Gate / RBAC) │  │                                       │
+│  └────────────────────┘  │                                       │
+│                          │  fetch() REST calls                   │
+│  Client Components ──────┼────────────────────────►  Express.js  │
+│  Server Components       │                         API Server    │
+│  Server Actions ─────────┼──────────────────────►  Port 5000    │
+└──────────────────────────┘                                       │
+                                                                   │
+                                      ┌────────────────────────────┘
+                                      │
+                                      ▼
+                          ┌───────────────────────┐
+                          │   MongoDB Atlas        │
+                          │   (Shared Database)    │
+                          └───────────────────────┘
+                  </pre>
                 </div>
               </div>
 
               <!-- Diagram Content 2: Workflow -->
               <div id="ppes-flow" class="diagram-content">
-                <div class="diagram-svg-container">
-                  <!-- Workflow SVG Diagram -->
-                  <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="10" y="80" width="70" height="40" rx="4" fill="#f1f5f9" stroke="#64748b"/>
-                    <text x="45" y="105" font-family="Inter, sans-serif" font-size="9" font-weight="700" fill="#334155" text-anchor="middle">Login</text>
-                    
-                    <path d="M 80 100 L 110 100" stroke="#64748b" stroke-dasharray="3 3"/>
+                <div class="diagram-svg-container" style="max-height: 400px; overflow-y: auto;">
+                  <pre class="mermaid" style="font-size: 0.6rem;">
+flowchart TD
+    A([Student submits test answers]) --> B[POST /api/tests/:id/attempt]
+    B --> C[Auth middleware: extract studentId from JWT]
+    C --> D[Test.findById with questions]
+    D --> E{Student already\nattempted this test?}
+    E -- Yes --> F[Return 409 Already attempted]
+    E -- No --> G[Init score=0, status=completed]
+    G --> H[For each question in test]
+    H --> I{Question type?}
 
-                    <polygon points="150,60 190,100 150,140 110,100" fill="#fef3c7" stroke="#d97706"/>
-                    <text x="150" y="103" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#b45309" text-anchor="middle">Auth Ok?</text>
+    I -- MCQ --> J[maxScore += question.points]
+    J --> K{student answer\n=== correctAnswer?}
+    K -- Yes --> L[score += question.points]
+    K -- No --> M[score += 0]
 
-                    <path d="M 150 60 L 150 40 L 230 40" stroke="#64748b" stroke-width="1.5"/>
-                    <rect x="230" y="20" width="100" height="35" rx="4" fill="#e0f2fe" stroke="#0284c7"/>
-                    <text x="280" y="41" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#0369a1" text-anchor="middle">Load Admin Panel</text>
+    I -- DESCRIPTIVE --> S[maxScore += question.points]
+    S --> T[score += 0 pending review]
+    T --> U[status = pending_review]
 
-                    <path d="M 150 140 L 150 160 L 230 160" stroke="#64748b" stroke-width="1.5"/>
-                    <rect x="230" y="142" width="100" height="35" rx="4" fill="#f0fdf4" stroke="#15803d"/>
-                    <text x="280" y="163" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#166534" text-anchor="middle">Load Student Portal</text>
-                  </svg>
+    L --> N{More questions?}
+    M --> N
+    U --> N
+
+    N -- Yes --> H
+    N -- No --> X[TestAttempt.create]
+    X --> Y[Return score, passingScore]
+                  </pre>
                 </div>
               </div>
 
               <!-- Diagram Content 3: UML Use Case -->
               <div id="ppes-usecase" class="diagram-content">
-                <div class="diagram-svg-container">
-                  <!-- Use Case UML SVG Diagram -->
-                  <svg viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Actor Stick Figure Left -->
-                    <circle cx="40" cy="80" r="12" stroke="#1e293b" stroke-width="2"/>
-                    <line x1="40" y1="92" x2="40" y2="130" stroke="#1e293b" stroke-width="2"/>
-                    <line x1="20" y1="105" x2="60" y2="105" stroke="#1e293b" stroke-width="2"/>
-                    <line x1="40" y1="130" x2="25" y2="165" stroke="#1e293b" stroke-width="2"/>
-                    <line x1="40" y1="130" x2="55" y2="165" stroke="#1e293b" stroke-width="2"/>
-                    <text x="40" y="185" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">Volunteer</text>
+                <div class="diagram-svg-container" style="max-height: 400px; overflow-y: auto;">
+                  <pre class="mermaid" style="font-size: 0.6rem;">
+sequenceDiagram
+    actor Student
+    participant Browser
+    participant NextJS as Next.js Server
+    participant Express as Express API (5000)
+    participant MongoDB
 
-                    <!-- System Boundary Box -->
-                    <rect x="110" y="15" width="180" height="170" rx="8" fill="white" stroke="#94a3b8" stroke-dasharray="2 2"/>
-                    <text x="200" y="32" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#64748b" text-anchor="middle">PPES Portal Boundaries</text>
+    Student->>Browser: Enter email + password
+    Browser->>NextJS: loginAction()
+    NextJS->>Express: POST /api/auth/login
+    Express->>MongoDB: User.findOne()
+    MongoDB-->>Express: User document
+    Express->>Express: bcrypt.compare()
 
-                    <!-- Use Cases -->
-                    <ellipse cx="200" cy="60" rx="60" ry="16" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-                    <text x="200" y="63" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#1d4ed8" text-anchor="middle">Record Attendance</text>
-
-                    <ellipse cx="200" cy="110" rx="60" ry="16" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-                    <text x="200" y="113" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#1d4ed8" text-anchor="middle">Distribute Homework</text>
-
-                    <ellipse cx="200" cy="158" rx="60" ry="16" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-                    <text x="200" y="161" font-family="Inter, sans-serif" font-size="8" font-weight="700" fill="#1d4ed8" text-anchor="middle">Track Progress</text>
-
-                    <!-- Actor Stick Figure Right -->
-                    <circle cx="360" cy="80" r="12" stroke="#1e293b" stroke-width="2"/>
-                    <line x1="360" y1="92" x2="360" y2="130" stroke="#1e293b" stroke-width="2"/>
-                    <line x1="340" y1="105" x2="380" y2="105" stroke="#1e293b" stroke-width="2"/>
-                    <line x1="360" y1="130" x2="345" y2="165" stroke="#1e293b" stroke-width="2"/>
-                    <line x1="360" y1="130" x2="375" y2="165" stroke="#1e293b" stroke-width="2"/>
-                    <text x="360" y="185" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#1e293b" text-anchor="middle">Student</text>
-
-                    <!-- Associations -->
-                    <line x1="60" y1="110" x2="140" y2="70" stroke="#64748b" stroke-width="1"/>
-                    <line x1="60" y1="110" x2="140" y2="110" stroke="#64748b" stroke-width="1"/>
-                    <line x1="340" y1="110" x2="260" y2="110" stroke="#64748b" stroke-width="1"/>
-                    <line x1="340" y1="110" x2="260" y2="150" stroke="#64748b" stroke-width="1"/>
-                  </svg>
+    alt Valid credentials
+        Express-->>NextJS: 200 {user:{id,role}}
+        NextJS->>NextJS: sign JWT (24h)
+        NextJS->>Browser: Set cookie "token"
+        Browser-->>Student: Redirect to /student dashboard
+    else Invalid credentials
+        Express-->>NextJS: 401 Unauthorized
+        Browser-->>Student: Show error toast
+    end
+                  </pre>
                 </div>
               </div>
 
