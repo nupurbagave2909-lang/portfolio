@@ -599,11 +599,11 @@
 }
 
 .project-card-image {
-  height: 180px;
+  height: 240px;
   border-radius: var(--border-radius-sm);
   border: 1px solid var(--glass-border);
   overflow: hidden;
-  background-color: #fff;
+  background-color: #f8fafc;
   margin-bottom: 1.5rem;
 }
 
