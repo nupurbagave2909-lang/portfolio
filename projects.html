@@ -186,7 +186,6 @@
               
               <div class="diagram-tabs">
                 <button class="diagram-tab-btn active" onclick="switchDiagram('ppes-arch', this)">Architecture</button>
-                <button class="diagram-tab-btn" onclick="switchDiagram('ppes-flow', this)">Workflow</button>
                 <button class="diagram-tab-btn" onclick="switchDiagram('ppes-usecase', this)">UML Sequence</button>
               </div>
 
@@ -220,40 +219,6 @@
                           │   MongoDB Atlas        │
                           │   (Shared Database)    │
                           └───────────────────────┘
-                  </pre>
-                </div>
-              </div>
-
-              <!-- Diagram Content 2: Workflow -->
-              <div id="ppes-flow" class="diagram-content">
-                <div class="diagram-svg-container" style="max-height: none; overflow: auto; padding-bottom: 1rem;">
-                  <pre class="mermaid" style="margin: 0 auto;">
-flowchart TD
-    A(["Student submits test answers"]) --> B["POST /api/tests/:id/attempt"]
-    B --> C["Auth middleware: extract studentId from JWT"]
-    C --> D["Test.findById with questions"]
-    D --> E{"Student already<br>attempted this test?"}
-    E -- Yes --> F["Return 409 Already attempted"]
-    E -- No --> G["Init score=0, status=completed"]
-    G --> H["For each question in test"]
-    H --> I{"Question type?"}
-
-    I -- MCQ --> J["maxScore += question.points"]
-    J --> K{"student answer<br>=== correctAnswer?"}
-    K -- Yes --> L["score += question.points"]
-    K -- No --> M["score += 0"]
-
-    I -- DESCRIPTIVE --> S["maxScore += question.points"]
-    S --> T["score += 0 pending review"]
-    T --> U["status = pending_review"]
-
-    L --> N{"More questions?"}
-    M --> N
-    U --> N
-
-    N -- Yes --> H
-    N -- No --> X["TestAttempt.create"]
-    X --> Y["Return score, passingScore"]
                   </pre>
                 </div>
               </div>
